@@ -25,7 +25,14 @@ public class Player : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         string controlScheme = input.defaultControlScheme;
         powerShotRange = GetComponentInChildren<CircleCollider2D>();
-        input.SwitchCurrentControlScheme(controlScheme, Keyboard.current, Gamepad.current);
+        if(Gamepad.current != null)
+        {
+            input.SwitchCurrentControlScheme(controlScheme, Keyboard.current, Gamepad.current);
+        }
+        else
+        {
+            input.SwitchCurrentControlScheme(controlScheme, Keyboard.current);
+        }
         powerShotActive = false;
         powerShotAvailable = true;
     }
