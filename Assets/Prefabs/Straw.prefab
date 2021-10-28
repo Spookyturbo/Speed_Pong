@@ -278,6 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerShotSpeed: 0.5
   speed: 10
+  usePlayerPrefs: 1
 --- !u!95 &5204103954142242391
 Animator:
   serializedVersion: 3

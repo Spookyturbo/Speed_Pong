@@ -136,3 +136,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   acceleration: 0.1
+  usePlayerPrefs: 1

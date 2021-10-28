@@ -147,3 +147,4 @@ MonoBehaviour:
   maxDurability: 10
   durability: 0
   colorOffsetModifier: 10
+  usePlayerPrefs: 1

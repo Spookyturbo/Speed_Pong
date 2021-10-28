@@ -10,9 +10,16 @@ public class Ball : MonoBehaviour
     public float acceleration = 0.1f;
     private Vector2 prevVelocity;
 
+    [Space]
+    public bool usePlayerPrefs = false;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        if(usePlayerPrefs)
+        {
+            acceleration = SettingsManager.BallAcceleration;
+        }
     }
 
     void Start()

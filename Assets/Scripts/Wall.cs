@@ -11,10 +11,19 @@ public class Wall : MonoBehaviour
     public int durability;
     public int colorOffsetModifier = 5;
 
+    [Space]
+    public bool usePlayerPrefs = false;
+
     private void Awake()
     {
         sp = GetComponent<SpriteRenderer>();
         startColor = sp.color;
+
+        if (usePlayerPrefs)
+        {
+            maxDurability = SettingsManager.WallHealth;
+        }
+
         widthStep = transform.localScale.x / maxDurability;
         durability = maxDurability;
     }

@@ -17,24 +17,33 @@ public class Player : MonoBehaviour
     private bool powerShotAvailable;
     private List<Collider2D> ballsInRange;
 
+    [Space]
+    public bool usePlayerPrefs = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         input = GetComponent<PlayerInput>();
         boxCollider = GetComponent<BoxCollider2D>();
-        string controlScheme = input.defaultControlScheme;
+        //string controlScheme = input.defaultControlScheme;
         powerShotRange = GetComponentInChildren<CircleCollider2D>();
-        if(Gamepad.current != null)
-        {
-            input.SwitchCurrentControlScheme(controlScheme, Keyboard.current, Gamepad.current);
-        }
-        else
-        {
-            input.SwitchCurrentControlScheme(controlScheme, Keyboard.current);
-        }
+        //if(Gamepad.current != null)
+        //{
+        //    input.SwitchCurrentControlScheme(controlScheme, Keyboard.current, Gamepad.current);
+        //}
+        //else
+        //{
+        //    input.SwitchCurrentControlScheme(controlScheme, Keyboard.current);
+        //}
         powerShotActive = false;
         powerShotAvailable = true;
+
+        if(usePlayerPrefs)
+        {
+            powerShotSpeed = SettingsManager.PowershotAcceleration;
+            speed = SettingsManager.PlayerSpeed;
+        }
     }
 
     private void FixedUpdate()

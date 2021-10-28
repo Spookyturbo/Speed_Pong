@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject gameOverPanel;
     public TMP_Text gameOverText;
+
+    public GameObject pauseMenuPanel;
     
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,8 @@ public class UIManager : MonoBehaviour
         GameManager.instance.player2Scored += displayPlayer2Score;
 
         GameManager.instance.gameEnded += GameOverScreen;
+
+        GameManager.instance.gamePaused += ShowPauseMenu;
     }
 
     void displayPlayer1Score(int newScore) => player1Score.SetText(newScore.ToString());
@@ -29,6 +34,11 @@ public class UIManager : MonoBehaviour
     void ToggleMenu()
     {
         menuPanel.SetActive(!menuPanel.activeSelf);
+    }
+
+    void ShowPauseMenu(object sender, EventArgs e)
+    {
+        pauseMenuPanel.SetActive(true);
     }
 
     void GameOverScreen(int winner)
